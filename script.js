@@ -1,49 +1,66 @@
 function getComputerChoice() {
-
+    const rand = Math.floor(Math.random() * 3);
+    if (rand === 0) return "rock";
+    if (rand === 1) return "paper";
+    return "scissors";
 }
 
-function convertUserChoice() {
-    if (uChoice === 1) {
-        let uHand = "Rock";
-    } else if (uChoice === 2) {
-        let uHand = "Paper";
-    } else if (uChoice === 3) {
-        let uHand = 'Scissors'
+function getHumanChoice() {
+    let choice = prompt("Play by entering rock, paper, or scissors").toLowerCase();
+
+    if (choice !== "rock" && choice !== "paper" && choice !== "scissors") {
+        console.log("Invalid choice");
+        return null;
     }
+
+    console.log("You Chose " + choice);
+    return choice;
 }
 
-function userChoice() {
-    let num = prompt("Play by entering the number\n1. Rock\n2. Paper\n3. Scissors");
-    if (num !== null) {
-        console.log("You chose " + convertUserChoice.uHand());
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log("Tie! Both chose " + humanChoice);
+        return;
+    }
+
+    if (
+        (humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "paper" && computerChoice === "rock") || (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
     } else {
-        console.log("Invalid/Cancelled")
+        console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
     }
 }
 
-console.log(userChoice());
 
+let humanScore = 0;
+let computerScore = 0;
 
-/* Get user Input
-1: Rock
-2: Paper
-3: Scissors
+let playAgain = true;
 
-if(user === computerChoice){
-    return tie
-}
-if(user = 1 & compChoice = 3){
-    return You Win
-}else if(user = 2 & compChoice = 1){
-    You Win
-}else if(user = 3 & compChoice = 2){
-    You Win
-}else{
-    You Lose
-}
+do {
+    for (let round = 1; round <= 5; round++) {
+        const human = getHumanChoice();
+        if (human === null) {
+            playAgain = false;
+            break;
+        }
 
+        const computer = getComputerChoice();
+        playRound(human, computer);
 
-Prompt user to pick
-Generate from computer randomly
-compare numbers
-*/
+        alert(`Score → You: ${humanScore} | Computer: ${computerScore} (Round ${round}/5)`);
+    }
+
+    if (!playAgain) break;
+
+    let answer = prompt("Do you want to play another set of 5 rounds? (y/n)");
+    if (answer === null || answer.toLowerCase() !== "y") {
+        playAgain = false;
+    }
+} while (playAgain);
+
+alert("Final Score → You: " + humanScore + " | Computer: " + computerScore);
+alert("Thanks for playing!");
