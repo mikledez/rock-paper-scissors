@@ -14,8 +14,7 @@ function processClick(humanChoice) {
 
     round++;
 
-    resultsPanel.innerHTML += `<p>Round ${round}: ${result}</p>`;
-    resultsPanel.innerHTML += `<p>Score:  You: ${humanScore} | Computer: ${computerScore}</p>`;
+    resultsPanel.innerHTML = `<p>Round ${round}: ${result} Score:  You: ${humanScore} | Computer: ${computerScore}</p>`;
 
     if (round === 5) {
         if (humanScore > computerScore) {
