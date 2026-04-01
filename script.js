@@ -8,12 +8,15 @@ function getComputerChoice() {
 function getClick(humanChoice) {
     rockBtn.addEventListener("click", function () {
         let humanChoice = "rock";
+        return humanChoice;
     });
     paperBtn.addEventListener("click", function () {
         let humanChoice = "paper";
+        return humanChoice;
     });
     scissorsBtn.addEventListener("click", function () {
         let humanChoice = "scissors";
+        return humanChoice;
     });
 }
 
