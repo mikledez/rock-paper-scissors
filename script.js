@@ -1,9 +1,6 @@
 function getComputerChoice() {
-
-    const rand = Math.floor(Math.random() * 3);
-    if (rand === 0) return "rock";
-    if (rand === 1) return "paper";
-    return "scissors";
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
 function processClick(humanChoice) {

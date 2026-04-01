@@ -85,5 +85,7 @@ h1 {
     border-radius: var(--corner);
 
     color: white;
-    background: linear-gradient(purple, white);
+    background: linear-gradient(purple, rgb(82, 0, 84));
+
+    padding-left: 10px;
 }
