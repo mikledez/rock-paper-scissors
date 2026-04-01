@@ -5,18 +5,17 @@ function getComputerChoice() {
     return "scissors";
 }
 
-function getHumanChoice() {
-    let choice = prompt("Play by entering rock, paper, or scissors").toLowerCase();
-
-    if (choice !== "rock" && choice !== "paper" && choice !== "scissors") {
-        console.log("Invalid choice");
-        return null;
-    }
-
-    console.log("You Chose " + choice);
-    return choice;
+function getClick(humanChoice) {
+    rockBtn.addEventListener("click", function () {
+        let humanChoice = "rock";
+    });
+    paperBtn.addEventListener("click", function () {
+        let humanChoice = "paper";
+    });
+    scissorsBtn.addEventListener("click", function () {
+        let humanChoice = "scissors";
+    });
 }
-
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
@@ -40,8 +39,17 @@ function playRound(humanChoice, computerChoice) {
 
 let humanScore = 0;
 let computerScore = 0;
-
 let playAgain = true;
+
+const rockBtn = document.getElementById("rock-button");
+const paperBtn = document.getElementById("paper-button");
+const scissorsBtn = document.getElementById("scissors-button");
+
+const resultsPanel = document.querySelector(".results-panel");
+
+
+
+
 /*
 do {
     for (let round = 1; round <= 5; round++) {
