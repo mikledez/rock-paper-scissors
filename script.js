@@ -17,6 +17,7 @@ function getHumanChoice() {
     return choice;
 }
 
+
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log("Tie! Both chose " + humanChoice);
@@ -41,7 +42,7 @@ let humanScore = 0;
 let computerScore = 0;
 
 let playAgain = true;
-
+/*
 do {
     for (let round = 1; round <= 5; round++) {
         const human = getHumanChoice();
@@ -66,3 +67,4 @@ do {
 
 alert("Final Score → You: " + humanScore + " | Computer: " + computerScore);
 alert("Thanks for playing!");
+*/
