@@ -1,29 +1,35 @@
 function getComputerChoice() {
+
     const rand = Math.floor(Math.random() * 3);
     if (rand === 0) return "rock";
     if (rand === 1) return "paper";
     return "scissors";
 }
 
-function getClick(humanChoice) {
-    rockBtn.addEventListener("click", function () {
-        let humanChoice = "rock";
-        return humanChoice;
-    });
-    paperBtn.addEventListener("click", function () {
-        let humanChoice = "paper";
-        return humanChoice;
-    });
-    scissorsBtn.addEventListener("click", function () {
-        let humanChoice = "scissors";
-        return humanChoice;
-    });
+function processClick(humanChoice) {
+    if (round >= 5) return;
+
+    const computerChoice = getComputerChoice;
+    const result = playRound(humanChoice, computerChoice);
+
+    resultsPanel.innerHTML += `<p>Round ${round}: ${result}</p>`;
+    resultsPanel.innerHTML += `<p>Score:  You: ${humanScore} | Computer: ${computerScore}</p>`;
+
+    if (round === 5) {
+        if (humanScore > computerScore) {
+            resultsPanel.innerHTML += `<h3>You won the game!</h3>`;
+        } else if (computerScore > humanScore) {
+            resultsPanel.innerHTML += `<h3>You lost the game!</h3>`;
+        } else {
+            resultsPanel.innerHTML += `<h3>Game is a tie!</h3>`;
+        }
+    }
 }
 
 function playRound(humanChoice, computerChoice) {
+
     if (humanChoice === computerChoice) {
-        console.log("Tie! Both chose " + humanChoice);
-        return;
+        return ("Tie! Both chose " + humanChoice);
     }
 
     if (
@@ -31,11 +37,11 @@ function playRound(humanChoice, computerChoice) {
         || (humanChoice === "paper" && computerChoice === "rock")
         || (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
+        return `You Win! ${humanChoice} beats ${computerChoice}`;
     } else {
-        console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
+        return `You Lose! ${computerChoice} beats ${humanChoice}`;
     }
 }
 
@@ -44,13 +50,27 @@ let humanScore = 0;
 let computerScore = 0;
 let playAgain = true;
 
+
 const rockBtn = document.getElementById("rock-button");
 const paperBtn = document.getElementById("paper-button");
 const scissorsBtn = document.getElementById("scissors-button");
 
 const resultsPanel = document.querySelector(".results-panel");
 
+rockBtn.addEventListener("click", () => handleClick("rock"));
+paperBtn.addEventListener("click", () => handleClick("paper"));
+scissorsBtn.addEventListener("click", () => handleClick("scissors"));
 
+
+
+do {
+    for (let round = 1; round <= 5; round++) {
+        const human = getClick();
+        const computer = getComputerChoice();
+
+        playRound(human, computer);
+    }
+}
 
 
 /*
