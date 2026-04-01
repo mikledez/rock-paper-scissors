@@ -84,6 +84,6 @@ h1 {
     transform: translate(-50%, -50%);
     border-radius: var(--corner);
 
-
+    color: white;
     background: linear-gradient(purple, white);
 }

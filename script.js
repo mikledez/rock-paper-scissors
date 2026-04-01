@@ -9,8 +9,10 @@ function getComputerChoice() {
 function processClick(humanChoice) {
     if (round >= 5) return;
 
-    const computerChoice = getComputerChoice;
+    const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
+
+    round++;
 
     resultsPanel.innerHTML += `<p>Round ${round}: ${result}</p>`;
     resultsPanel.innerHTML += `<p>Score:  You: ${humanScore} | Computer: ${computerScore}</p>`;
@@ -48,7 +50,7 @@ function playRound(humanChoice, computerChoice) {
 
 let humanScore = 0;
 let computerScore = 0;
-let playAgain = true;
+let round = 0;
 
 
 const rockBtn = document.getElementById("rock-button");
@@ -57,45 +59,6 @@ const scissorsBtn = document.getElementById("scissors-button");
 
 const resultsPanel = document.querySelector(".results-panel");
 
-rockBtn.addEventListener("click", () => handleClick("rock"));
-paperBtn.addEventListener("click", () => handleClick("paper"));
-scissorsBtn.addEventListener("click", () => handleClick("scissors"));
-
-
-
-do {
-    for (let round = 1; round <= 5; round++) {
-        const human = getClick();
-        const computer = getComputerChoice();
-
-        playRound(human, computer);
-    }
-}
-
-
-/*
-do {
-    for (let round = 1; round <= 5; round++) {
-        const human = getHumanChoice();
-        if (human === null) {
-            playAgain = false;
-            break;
-        }
-
-        const computer = getComputerChoice();
-        playRound(human, computer);
-
-        alert(`Score → You: ${humanScore} | Computer: ${computerScore} (Round ${round}/5)`);
-    }
-
-    if (!playAgain) break;
-
-    let answer = prompt("Do you want to play another set of 5 rounds? (y/n)");
-    if (answer === null || answer.toLowerCase() !== "y") {
-        playAgain = false;
-    }
-} while (playAgain);
-
-alert("Final Score → You: " + humanScore + " | Computer: " + computerScore);
-alert("Thanks for playing!");
-*/
+rockBtn.addEventListener("click", () => processClick("rock"));
+paperBtn.addEventListener("click", () => processClick("paper"));
+scissorsBtn.addEventListener("click", () => processClick("scissors"));
