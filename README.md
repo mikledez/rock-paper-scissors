@@ -1,8 +1,14 @@
-This is my rock paper scissors project from The Odin Project.
+**Library App**
+A library management application project that focuses on OOP in JavaScript and DOM manipulation.
 
-This project now runs visually on the main page instead of the console. 
+Features
+-Add books with title, author, pages, and read status
+-Dynamic rendering of books as cards
+-Remove books from library
+-Toggle read/unread status
+-Unique ID system using crypto.randimUUID()
 
-This simple project aims to demosntrate my skills in JavaScipt and CSS at the current stage. Thank you for reading!!
-
-
-    -Mikkel Ledezma
+What I learned
+-OOP
+-DOM Manipulation
+-Event Handling
